@@ -1,0 +1,223 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="form.css" />
+    <link rel="stylesheet" href="./themes/resume.css" id="theme" />
+</head>
+
+<body>
+    <div class="header">Generateur de CV</div>
+    <div id="main">
+        <div class="inputMain">
+            <div class="inputHeader">Rentrer vos informations</div>
+            <div class="categories">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="#personal">Personnel</a></li>
+                        <li><a href="#education">Éducation</a></li>
+                        <li><a href="#projects">Projets</a></li>
+                        <li><a href="#experience">Expérience</a></li>
+                        <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Thèmes
+                          <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#" id="default">Défaut</a></li>
+                            <li><a href="#" id="blue">Bleu</a></li>
+                            <li><a href="#" id="grey">Gris</a></li>
+                          </ul>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                  </nav>
+            </div>
+            <div class="inputForm">
+                <form name='registration' onSubmit="return formValidation();">
+                    <ul>
+                        <li>
+                            <h3 id="personal" style="text-align: left; font-weight: bold;">Détails personnels</h3>
+                        </li>
+                        <li><label for="username">Nom:</label></li>
+                        <li><input type="text" name="username" size="30" /></li>
+
+                        <li><label for="address">Adresse:</label></li>
+                        <li><input type="text" name="address" size="30" /></li>
+
+                        <li><label for="country">Pays:</label></li>
+                        <li>
+                            <select name="country">
+                                <option selected="" value="Default">(Veuillez sélectionner un pays)</option>
+                                <option value="Australia">Maroc</option>
+                                <option value="Canada">France</option>
+                                <option value="India">Espagne</option>
+                                <option value="Russia">Allemagne</option>
+                                <option value="USA">États-Unis</option>
+                            </select>
+                        </li>
+                        <li><label for="zip">zip code:</label></li>
+                        <li><input type="text" name="zip" /></li>
+
+                        <li><label for="email">Email:</label></li>
+                        <li><input type="text" name="email" size="30" /></li>
+
+                        <li><label id="gender">Sexe:</label></li>
+                        <li><input type="radio" name="sex" value="Male" /><span>Homme</span></li>
+                        <li><input type="radio" name="sex" value="Female" /><span>Femme</span></li>
+
+                        <li><label>Langue:</label></li>
+                        <li><input type="checkbox" name="language" value="English" checked /><span>Anglais</span></li>
+                        <li><input type="checkbox" name="language" value="Hindi" /><span>Arabe</span></li>
+                        <li><input type="checkbox" name="language" value="French" /><span>Francais</span></li>
+                        <li><input type="checkbox" name="language" value="Spanish" /><span>Espagnol</span></li>
+                        <li><input type="checkbox" name="language" value="Russian" /><span>allemand</span></li>
+                        <li><label for="desc">About:</label></li>
+                        <li><textarea name="desc" id="desc"></textarea></li>
+                        <li><label for="photo">photo:</label></li>
+                        <li><input type="file" name="photo" id="photo-input" accept="image/*" onchange="previewPhoto()" /></li>
+                    </ul>
+                    <br>
+                    <ul>
+
+                        <li>
+                            <h3><label id="education" style="text-align: center;">Éducation</label></h3>
+
+                        </li>
+                        <div class="eform">
+                            <li><label for="institute">Institution:</label></li>
+                            <li><input type="text" required name="insti" size="30" /></li>
+
+                            <li><label for="degree">Degré:</label></li>
+                            <li><input type="text" name="degree" size="20" required /></li>
+                            <li><label for="year">Fin d'année:</label></li>
+                            <li><input type="text" required name="year" size="10" /></li>
+                            <li><label for="result">Résultat:</label></li>
+                            <li><input type="text" required name="result" size="20" /></li>
+                        </div>
+                    </ul>
+                    <br>
+                    <ul>
+                        <li>
+                            <h3><label id="projects"
+                                    style="text-align: center; margin-top: 2%; margin-top: 2%;">Projets</label></h3>
+                        </li>
+                        <div id="pform">
+                            <li><label for="pname">Nom: </label></li>
+                            <li><input type="text" name="pname" size="20" /></li>
+
+                            <li><label for="pabout">À propos:</label></li>
+                            <li><textarea type="text" name="pabout" size="30"></textarea></li>
+                        </div>
+                    </ul>
+                    <br>
+                    <ul>
+                        <li>
+                            <h3><label id="experience"
+                                    style="text-align: center; margin-top: 2%; margin-top: 2%;">Expérience</label></h3>
+                        </li>
+                        <div id="expform">
+                            <li><label for="position">Position: </label></li>
+                            <li><input type="text" name="position" size="20" /></li>
+                            <li><label for="company">société:</label></li>
+                            <li><input type="text" name="company" size="30"></li>
+                            <li><label for="duration">Durée:</label></li>
+                            <li><input type="text" name="duration" size="10"></li>
+                        </div>
+
+                        <li><input type="submit" name="submit" value="Submit" style="color: aliceblue;" /></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="previewMain">
+            <div class="inputHeader">APERÇU DU CV</div>
+            <div id="container">
+                <div class="left">
+                    <img src="assets/female.png">
+                    <div>
+                        <h4>GENRE</h4>
+                    </div>
+                    <h2>CONTACTEZ MOI</h2>
+                    <div class="contact">
+                        <h3>E-mail</h3>
+                        <a href="" id="mail" style="padding-bottom: 2%;">votre identifiant de messagerie</a><br>
+                        <h3>Adresse</h3>
+                        <div id="address">Votre adresse</div>
+                    </div>
+                    <div>
+                        <h2>LANGUES</h2>
+                        <div id="lang">
+                            Langue 1
+                            <br>
+                            Langue 2
+                        </div>
+                    </div>
+
+                </div>
+                <div class="right">
+                    <h1 style="text-align:left;" id="name">VOTRE NOM</h1>
+                    <div style="text-align:left;">
+                        <h2>à propos de moi</h2>
+                        <div id="about">à propos de vous. Vos qualités et soft skills</div>
+                    </div>
+                    <div>
+                        <h2>Photo</h2>
+                        <img id="cv-photo" alt="Photo de profil" style="max-width: 100%;" />
+                    </div>
+                    <div>
+                        <h2>ÉDUCATION</h2>
+                        <table>
+                            <tr>
+                                <td class="yr">Année</td>
+                                <td class="deg">nom de diplome</td>
+                                <td class="insti">Nom de l'Institut</td>
+                                <td class="res">Résultat</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="pinfo">
+                        <h2>PROJETS</h2>
+                        <table>
+                            <tr>
+                                <td class="pname" style="width: 10%;">Nom</td>
+                                <td class="pabout" style="width: 20%;">À propos du projet</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="expinfo">
+                        <h2>EXPÉRIENCES</h2>
+                        <table>
+                            <tr>
+                                <td class="position" style="width: 10%;">Position</td>
+                                <td class="company" style="width: 20%;">Entreprise</td>
+                                <td class="duration" style="width: 20%;">Durée</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="form.js"></script>
+    <script>
+        function previewPhoto() {
+            var photoInput = document.getElementById("photo-input");
+            var cvPhoto = document.getElementById("cv-photo");
+
+            if (photoInput.files && photoInput.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    cvPhoto.src = e.target.result;
+                };
+
+                reader.readAsDataURL(photoInput.files[0]);
+            }
+        }
+    </script>
+</body>
+
+</html>
